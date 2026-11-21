@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Seat Map - Show A</title>
+<link rel="stylesheet" href="/static/app.css">
+<script src="/static/app.js" defer></script>
+</head>
+<body>
+<header class="page-head">
+  <h1>Show A</h1>
+  <p class="lede">Pick seats, then hold them for a short time.</p>
+</header>
+<main>
+  <section class="panel" aria-labelledby="map-heading">
+    <h2 id="map-heading">Choose your seats</h2>
+    <p class="stage" aria-hidden="true">STAGE</p>
+    <div id="seat-map" role="group" aria-labelledby="map-heading">
+      <p class="loading">Loading seats...</p>
+    </div>
+    <ul class="legend" aria-label="Seat key">
+      <li><span class="swatch s-available" aria-hidden="true"></span>Free: available</li>
+      <li><span class="swatch s-selected" aria-hidden="true"></span>Pick: selected</li>
+      <li><span class="swatch s-own" aria-hidden="true"></span>Yours: held by you</li>
+      <li><span class="swatch s-other" aria-hidden="true"></span>Taken: held by someone else</li>
+    </ul>
+  </section>
+  <section class="panel" aria-labelledby="actions-heading">
+    <h2 id="actions-heading">Your selection</h2>
+    <p id="selection-summary">No seats selected</p>
+    <div class="actions">
+      <button type="button" id="hold-button" disabled>Hold selected seats</button>
+      <button type="button" id="release-button">Release my holds</button>
+      <button type="button" id="reload-button">Reload seats</button>
+    </div>
+    <p id="action-status" role="status" aria-live="polite" data-kind="info"></p>
+    <p id="remaining-status" role="status" aria-live="off">Remaining: loading</p>
+    <p id="hold-expiry"></p>
+  </section>
+</main>
+</body>
+</html>
