@@ -79,7 +79,8 @@ Invariants that every change must keep:
 - A seat has at most one live hold. `PRIMARY KEY(show_id, seat_id)` on `holds` is the last guard; the conflict check inside the write transaction is the first.
 - A multi-seat hold is all or nothing. A conflict or an unknown seat writes no row.
 - Existing databases open under new code. A schema change is a new entry in `MIGRATIONS`, never an edit of an old one, with a test that opens a database made by the previous version.
-- Mutating routes check Host and Origin and need `X-Session-Token`. Error responses use the envelope `{"error": {"code", "message"}}` and never contain a traceback.
+- Mutating routes check Host and Origin. All of them except `POST /api/v1/session`, which issues the token, need `X-Session-Token`. Error responses use the envelope `{"error": {"code", "message"}}` and never contain a traceback.
+- A session token is never shown to another session: the state reports `held_own` or `held_other`, not the owner.
 
 ## Git workflow
 
