@@ -42,6 +42,8 @@ SQLite file `seats.sqlite3` inside the data directory, WAL mode. Delete the dire
 ## Planned scope
 Seating blocks and fixture import; idempotent holds with expiry sweep; simulated checkout and refunds with an append-only ledger; operator panel with live updates; seeded load harness with an independent replay oracle. Details are in [docs/PRD.md](docs/PRD.md).
 
+Contributor and agent instructions are in [CLAUDE.md](CLAUDE.md). How the code is built, and where it differs from the PRD, is in [docs/architecture.md](docs/architecture.md).
+
 ## Baseline verification
 
 - Windows with Python 3.13.14 and Ubuntu 24.04 WSL with Python 3.12.3 each passed 60 unit and API tests. WSL unit tests used temporary storage on tmpfs.

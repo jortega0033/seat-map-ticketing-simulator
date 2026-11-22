@@ -2,6 +2,8 @@
 
 Status legend: **[Implemented baseline]** = implemented in M1 (see [baseline verification](../README.md#baseline-verification)); **[Future]** = planned, not built.
 
+Reconciliation with the code at the M1 baseline (what is implemented, planned, and still to be verified, plus findings D1 to D12 where this document and the code or the backlog differ) is in [architecture.md](architecture.md).
+
 ## 1. Intended user and workflow
 
 A single small-event operator working offline on their own machine who wants to see how seat holds and race conditions behave in a fictional venue before any real integration.
