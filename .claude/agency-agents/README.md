@@ -87,7 +87,7 @@ Verification 2026-11-22 (after the "In this repository" sections were added): Cl
 
 ## Local change: SDLC kit (2026-11-22)
 
-Added in one pass, with no change to the role files other than one checklist line:
+Added in one pass, with no change to the role files other than one checklist line each and, in Code Reviewer and Reality Checker, the CI wording of the "Project" line (they no longer say there is no CI; CI must be green on the pull request, and Reality Checker's inputs now include green CI with the run link, `CLAUDE.md` Evidence item 7):
 
 - Review gate hook `.claude/hooks/role_gate.py` (gate roles Code Reviewer and Reality Checker) and `.claude/settings.json`.
 - `.claude/skills/next-ticket/`, `ui-ux-pro-max/` and `unslop/` (the last two with their own PROVENANCE.md); the `implement-ticket` playbook now names them.

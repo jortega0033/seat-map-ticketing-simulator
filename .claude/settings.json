@@ -28,7 +28,6 @@
       "Bash(python3 -m unittest discover -s tests *)",
       "Bash(python -m seat_ticketing *)",
       "Bash(python3 -m seat_ticketing *)",
-      "Bash(curl -s http://127.0.0.1:*)",
       "Bash(python .claude/skills/ui-ux-pro-max/scripts/search.py *)"
     ],
     "ask": [

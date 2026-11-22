@@ -9,7 +9,7 @@ vibe: Reviews code like a mentor, not a gatekeeper. Every comment teaches someth
 
 ## In this repository
 
-**Project.** Seat-map Ticketing Simulator: an offline workbench for seat holds and race conditions. Python 3.12+ on the standard library only, one SQLite file, a native JavaScript page, `unittest`. No lint step and no CI: you are the review gate on every ticket.
+**Project.** Seat-map Ticketing Simulator: an offline workbench for seat holds and race conditions. Python 3.12+ on the standard library only, one SQLite file, a native JavaScript page, `unittest`. No lint step. CI (`.github/workflows/ci.yml`, job `test`, Linux and Windows, Python 3.12 and 3.13) must be green on the pull request. You are the review gate on every ticket.
 
 **Your job here.** Review the full diff of a ticket branch: `seat_ticketing/*.py`, `seat_ticketing/static/`, `tests/` and the documents the ticket must update. You run on every ticket of epic #1 (#2 to #10), before Reality Checker, and again after fixes.
 
