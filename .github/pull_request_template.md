@@ -11,6 +11,10 @@ Each command and its result, pasted from a real run (see "Evidence before a tick
 ```
 ```
 
+## Owner checks
+
+Steps only a person can do (by hand in a normal browser). Write "None" if there are none.
+
 ## Agent roles run
 
 | Role | What it was asked | Verdict |

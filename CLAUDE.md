@@ -13,7 +13,7 @@ An offline workbench for inspecting seat holds and race conditions in a fictiona
 | Product scope, milestones, contracts, fixture, acceptance matrix | [docs/PRD.md](docs/PRD.md) |
 | How the code is built, the traced hold workflow, invariants, differences between the PRD and the code | [docs/architecture.md](docs/architecture.md) |
 | Launch, smoke steps, limits, baseline verification | [README.md](README.md) |
-| Backlog | Epic issue #1 and its nine sub-issues (#2 to #10) on GitHub. The epic lists them in dependency order with estimates. |
+| Backlog | Epic issue #1 and its ten sub-issues (#2 to #10 and #13) on GitHub. The epic lists them in dependency order with estimates. A ticket labelled `tracking` or with open sub-issues is a container, not work. |
 | Loop setup and its limits | [LOOP.md](LOOP.md), [loop-constraints.md](loop-constraints.md) |
 | Project subagents and their origin | [.claude/agency-agents/README.md](.claude/agency-agents/README.md) |
 
@@ -101,7 +101,8 @@ Put these in the pull request description. Paste real output; do not summarise a
 5. For a change under `seat_ticketing/static/`: a browser run on `http://127.0.0.1:<port>/` with the browser name and version, the viewport sizes checked (800x600 and 360 px wide), keyboard-only operation of the changed controls, and the console free of errors and of blocked or external requests. Browser checks are manual: the repository has no approved browser automation (PRD section 14).
 6. `git status` showing no stray files, and confirmation that no dependency, external URL or non-loopback listener was added.
 7. Before the draft pull request is opened: `.github/workflows/ci.yml` is configured to run the documented checks. After CI has run on the draft: green CI with the run link, added to the pull request description and as a comment on the issue. Green CI is a condition for marking the pull request ready, checked by the driver; Reality Checker does not judge it.
-8. Anything not verified, said plainly.
+8. A criterion that needs a person is done as far as an agent can (a scripted run with tools already approved here, such as HTTP-level requests against 127.0.0.1; no browser driver unless the owner has approved one, PRD section 14; item 5 stays the authority for browser checks) and the rest is listed under "Owner checks" in the pull request.
+9. Anything not verified, said plainly.
 
 ## Agent roles
 
@@ -129,12 +130,12 @@ When asked to implement, continue or finish a GitHub issue, follow the playbook 
 
 How a ticket gets from the backlog to a ready pull request. Each piece has one home; this part only links them.
 
-- **Driver and playbook.** The owner starts a ticket with `/next-ticket` ([`.claude/skills/next-ticket/SKILL.md`](.claude/skills/next-ticket/SKILL.md)); it runs [`implement-ticket`](.claude/skills/implement-ticket/SKILL.md). No scheduler: the owner's go signal starts every run.
+- **Driver and playbook.** The owner starts a ticket with `/next-ticket` ([`.claude/skills/next-ticket/SKILL.md`](.claude/skills/next-ticket/SKILL.md)); it runs [`implement-ticket`](.claude/skills/implement-ticket/SKILL.md). It picks leaf tickets only (not `tracking`, not with open sub-issues), waits for CI without polling, and writes the reviewer diff to `.claude/state/review/`. No scheduler: the owner's go signal starts every run.
 - **Review gate hook.** [`.claude/hooks/role_gate.py`](.claude/hooks/role_gate.py) blocks `gh pr create` and `gh pr ready` until Code Reviewer and Reality Checker ran after the last code edit. `ROLE_GATE=off` in the environment Claude Code is started from switches it off for that session.
-- **Permissions.** [`.claude/settings.json`](.claude/settings.json): documented commands allowed; force pushes, pushes to `main`, `gh pr merge`, releases and reads of `.env` denied; edits to CI, agent configuration and Loop files ask first.
+- **Permissions.** [`.claude/settings.json`](.claude/settings.json): documented commands allowed; force pushes, pushes to `main`, `gh pr merge`, releases and reads of `.env` denied; edits to CI, agent configuration and Loop files ask first, at the repository root and at any depth (ticket worktrees).
 - **CI.** [`.github/workflows/ci.yml`](.github/workflows/ci.yml): job `test` on Linux and Windows, Python 3.12 and 3.13. It runs on the draft pull request and must be green before the pull request is marked ready; the driver checks this, not Reality Checker.
 - **Pull request.** [`.github/pull_request_template.md`](.github/pull_request_template.md). Code owner: [`.github/CODEOWNERS`](.github/CODEOWNERS).
-- **Labels.** `status:ready`, `status:blocked`, `status:in-progress`, `needs-decision`. A `needs-decision` ticket is not started.
+- **Labels.** `status:ready`, `status:blocked`, `status:in-progress`, `needs-decision`, `tracking` (container ticket, never picked). A `needs-decision` ticket is not started.
 - **Changelog.** Every ticket pull request adds one line to [`CHANGELOG.md`](CHANGELOG.md) under Unreleased.
 - **UI and writing.** [docs/ui-quality.md](docs/ui-quality.md) (ten binding rules; skills `ui-ux-pro-max` and `unslop` in `.claude/skills/`).
 - **Decisions.** [docs/owner-decisions.md](docs/owner-decisions.md) records the owner's decisions. Changing one needs the owner; stop and say so if one blocks a ticket.
