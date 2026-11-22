@@ -86,7 +86,7 @@ Invariants that every change must keep:
 
 - `main` is the default branch. CI runs on every pull request (see Delivery workflow); checks are also run locally and reported with their output.
 - One branch per issue. The repository has no naming rule yet; `<issue-number>-<short-slug>` is the suggested form. Small commits with imperative subjects and a type prefix, as in the existing history (`feat:`, and by extension `fix:`, `docs:`, `test:`, `chore:`).
-- Open a draft pull request that names the issue (`Part of #1`, `Closes #n`). Do not merge your own pull request and do not push to `main`.
+- Order: local checks pass, Code Reviewer and Reality Checker run on the full diff and the recorded local evidence, then open a draft pull request that names the issue (`Part of #1`, `Closes #n`), then CI runs, then mark it ready only when CI is green. Never open or ready a pull request with a gate not run after the last code edit. Do not merge your own pull request and do not push to `main`.
 - Never commit a data directory, a SQLite file, `.env*`, or `.prep/`.
 - Do not change `.claude/agents/`, `LOOP.md`, `loop-constraints.md` or `loop-budget.md` as part of a feature ticket.
 
@@ -100,7 +100,7 @@ Put these in the pull request description. Paste real output; do not summarise a
 4. For a new or changed route: one request and response pair per success and per error code, taken from a server started with `--port 0` on a scratch data directory, and the PRD section 6 diff.
 5. For a change under `seat_ticketing/static/`: a browser run on `http://127.0.0.1:<port>/` with the browser name and version, the viewport sizes checked (800x600 and 360 px wide), keyboard-only operation of the changed controls, and the console free of errors and of blocked or external requests. Browser checks are manual: the repository has no approved browser automation (PRD section 14).
 6. `git status` showing no stray files, and confirmation that no dependency, external URL or non-loopback listener was added.
-7. Green CI on the pull request, with the run link.
+7. Before the draft pull request is opened: `.github/workflows/ci.yml` is configured to run the documented checks. After CI has run on the draft: green CI with the run link, added to the pull request description and as a comment on the issue. Green CI is a condition for marking the pull request ready, checked by the driver; Reality Checker does not judge it.
 8. Anything not verified, said plainly.
 
 ## Agent roles
@@ -132,7 +132,7 @@ How a ticket gets from the backlog to a ready pull request. Each piece has one h
 - **Driver and playbook.** The owner starts a ticket with `/next-ticket` ([`.claude/skills/next-ticket/SKILL.md`](.claude/skills/next-ticket/SKILL.md)); it runs [`implement-ticket`](.claude/skills/implement-ticket/SKILL.md). No scheduler: the owner's go signal starts every run.
 - **Review gate hook.** [`.claude/hooks/role_gate.py`](.claude/hooks/role_gate.py) blocks `gh pr create` and `gh pr ready` until Code Reviewer and Reality Checker ran after the last code edit. `ROLE_GATE=off` in the environment Claude Code is started from switches it off for that session.
 - **Permissions.** [`.claude/settings.json`](.claude/settings.json): documented commands allowed; force pushes, pushes to `main`, `gh pr merge`, releases and reads of `.env` denied; edits to CI, agent configuration and Loop files ask first.
-- **CI.** [`.github/workflows/ci.yml`](.github/workflows/ci.yml): job `test` on Linux and Windows, Python 3.12 and 3.13. It must be green before a pull request is marked ready.
+- **CI.** [`.github/workflows/ci.yml`](.github/workflows/ci.yml): job `test` on Linux and Windows, Python 3.12 and 3.13. It runs on the draft pull request and must be green before the pull request is marked ready; the driver checks this, not Reality Checker.
 - **Pull request.** [`.github/pull_request_template.md`](.github/pull_request_template.md). Code owner: [`.github/CODEOWNERS`](.github/CODEOWNERS).
 - **Labels.** `status:ready`, `status:blocked`, `status:in-progress`, `needs-decision`. A `needs-decision` ticket is not started.
 - **Changelog.** Every ticket pull request adds one line to [`CHANGELOG.md`](CHANGELOG.md) under Unreleased.

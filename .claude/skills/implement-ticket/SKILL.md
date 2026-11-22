@@ -20,11 +20,11 @@ The project subagents in `.claude/agents/` are part of the work. Delegate to the
 6. **Test.** Add or change tests for every acceptance criterion and material edge case, then run the checks listed in `CLAUDE.md`. Record each command and its result.
 7. **Specialist review.** Run every role in the table "After coding" whose trigger matches the change.
 8. **Review gate, always.** Run Code Reviewer on the full diff. Fix every material finding, re-run the checks, and have the reviewer look again until no material finding is left.
-9. **Acceptance gate, always.** Run Reality Checker with the ticket's acceptance criteria and the evidence you produced. Do not call the ticket done unless it passes.
+9. **Acceptance gate, always.** Run Reality Checker with the ticket's acceptance criteria and the local evidence you produced. It checks that the documented checks ran locally and passed and that CI is configured to run them; it does not need a CI result. Do not open a pull request unless it passes.
 10. **UI check.** For a ticket that changes a screen, check every changed screen against the ten rules of `docs/ui-quality.md` and record the result as evidence.
 11. **Write the text.** Run user-facing copy, documentation and the pull request text through the `unslop` skill before the pull request is opened.
 12. **Changelog.** Add one line to `CHANGELOG.md` under Unreleased.
-13. **Hand off.** Capture the evidence `CLAUDE.md` asks for and open a draft pull request from `.github/pull_request_template.md` that names the issue. Mark it ready only when CI is green and both gates have run after the last code edit. Only the owner merges and releases; do not merge.
+13. **Hand off.** Capture the evidence `CLAUDE.md` asks for and open a draft pull request from `.github/pull_request_template.md` that names the issue, only after the local checks passed and both gates ran after the last code edit. Wait for CI on the draft. If CI fails, fix, re-run the local checks and both gates, and push. When CI is green, add the run link to the pull request description and mark it ready. Only the owner merges and releases; do not merge.
 
 ## Roles
 

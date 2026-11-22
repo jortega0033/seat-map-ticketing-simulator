@@ -16,7 +16,7 @@ Runs exactly one ticket of epic #1 (#2 to #10) and stops. Only the owner starts 
 3. **Claim.** Label it `status:in-progress` (remove `status:ready`).
 4. **Branch in a fresh worktree.** `git fetch origin`, then `git worktree add ../seat-map-ticketing-simulator-<issue> -b <issue>-<short-slug> origin/main`, as the Git workflow in `CLAUDE.md` says. Work only in that worktree. Never work on `main`.
 5. **Implement.** Follow the [`implement-ticket`](../implement-ticket/SKILL.md) playbook from step 1 to the end, including both gates.
-6. **Finish.** When Code Reviewer and Reality Checker have run after the last code edit and CI is green on the pull request, mark it ready with `gh pr ready` (the gate hook blocks this until they have run) and comment on the issue with the pull request link and the evidence summary. If CI is red or a gate does not pass, leave the pull request as a draft and comment with what failed.
+6. **Finish.** The draft pull request is opened only after the local checks passed and Code Reviewer and Reality Checker ran after the last code edit. Then wait for CI on the draft. When CI is green (you check this, not Reality Checker), mark it ready with `gh pr ready` (the gate hook blocks this until both gates ran) and comment on the issue with the pull request link and the evidence summary. If CI is red or a gate does not pass, leave the pull request as a draft and comment with what failed.
 7. **Stop.** One ticket per run. Do not merge, do not pick the next ticket, do not release.
 
 ## Never
