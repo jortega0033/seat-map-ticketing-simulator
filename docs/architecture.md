@@ -92,7 +92,7 @@ Also observed: `POST /api/v1/session` with `Origin: http://example.invalid` retu
 | P1: seating blocks and import | Planned | no import route, seats seeded from constants; issue #2 |
 | P2: idempotent holds, sweep, reconciliation | Planned | no `Idempotency-Key` handling anywhere; issue #3 |
 | P3: checkout, refunds, ledger | Planned | no order or ledger table; issue #4 |
-| P4: operator panel, server-sent events | Planned | the page polls every 5 s; issue #5 |
+| P4: operator panel, server-sent events | Planned | the page polls every 5 s; issues #5 (panel) and #9 (event stream) |
 | P5: load harness and replay oracle | Planned | no such module; issue #6 |
 
 ### Findings
@@ -112,7 +112,26 @@ Also observed: `POST /api/v1/session` with `Origin: http://example.invalid` retu
 | D11 | Issue #5 keeps a change log of 500 entries for reconnecting clients. Issue #6 replays "the change log" of a run of 2000 operations. | A log bounded at 500 cannot hold a 2000 operation run. One of the two needs a different retention rule or a different source. | issues #5 and #6 |
 | D12 | No issue covers the page for more than one show: choosing a show, drawing blocks, or sending an import. | Without it Show B is reachable only with `curl`. | issues #2 to #6, `app.js:5` |
 
-D1 to D4 are documentation fixes. D5 to D9 are facts an implementer must design around. D11 and D12 are gaps in the backlog. The batch plan attached to the epic (#1) assigns each of them to a ticket.
+D1 to D4 are documentation fixes. D5 to D9 are facts an implementer must design around. D11 and D12 are gaps in the backlog.
+
+### Where each finding is handled
+
+The backlog was revised on 2026-11-22: issues #2 to #6 were rewritten in place (each keeps its earlier text under "Original text (retained)") and issues #7 to #10 were added. All nine are sub-issues of the epic, #1. Findings D2, D8, D11 and D12 describe issues #2 to #6 as they read before that revision.
+
+| Finding | Ticket |
+|---|---|
+| D1, D3, D4 | #10 (release check: PRD sections 6 and 12 brought in line with the code) |
+| D2 | Decided in the epic (#1): the route in #2 stands. #10 removes the stale line from PRD section 15. |
+| D5 | #3 (a sweep that removed holds raises `version`), #8 (every change, expiry included, is a change log entry) |
+| D6 | #2 (seat id grammar per show; the limit of 12 seats per request stays) |
+| D7 | #2 (body limit per route, own nesting guard for the import route), #10 (PRD section 11 names the guard) |
+| D8 | #2 (store and routes take a show id), #7 (page for any show) |
+| D9 | #9 (event stream with its own response path, stream cap and shutdown) |
+| D10 | No ticket. Nothing to change. |
+| D11 | #8 (change log with a retention setting, built before checkout), #6 (the load run needs `--change-log-limit` raised and refuses a truncated log) |
+| D12 | #7 (show picker, block layout and import control in the page) |
+
+Dependency order, parallel tracks and estimates are in the epic.
 
 ## 5. Risks for the planned work
 

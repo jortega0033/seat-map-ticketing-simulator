@@ -13,7 +13,7 @@ An offline workbench for inspecting seat holds and race conditions in a fictiona
 | Product scope, milestones, contracts, fixture, acceptance matrix | [docs/PRD.md](docs/PRD.md) |
 | How the code is built, the traced hold workflow, invariants, differences between the PRD and the code | [docs/architecture.md](docs/architecture.md) |
 | Launch, smoke steps, limits, baseline verification | [README.md](README.md) |
-| Backlog | Epic issue #1 and its sub-issues on GitHub |
+| Backlog | Epic issue #1 and its nine sub-issues (#2 to #10) on GitHub. The epic lists them in dependency order with estimates. |
 | Loop setup and its limits | [LOOP.md](LOOP.md), [loop-constraints.md](loop-constraints.md) |
 | Project subagents and their origin | [.claude/agency-agents/README.md](.claude/agency-agents/README.md) |
 
