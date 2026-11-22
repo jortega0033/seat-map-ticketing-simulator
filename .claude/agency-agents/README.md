@@ -84,3 +84,12 @@ This supersedes any statement above that a role file is unmodified, that nothing
 The steps at which each role runs are in `.claude/skills/implement-ticket/SKILL.md`; the summary is in the section "Agent roles" of `CLAUDE.md`.
 
 Verification 2026-11-22 (after the "In this repository" sections were added): Claude Code 2.1.323, headless, run once from the repository root as `claude -p "List every project subagent defined in .claude/agents with its exact name and tools, say for each whether its instructions begin with a section titled In this repository, and say whether a skill named implement-ticket is available. Plain list, no commentary." --model haiku`, exit code 0. It listed all ten definitions: the nine Agency Agents roles, each reported as beginning with "In this repository", and `loop-verifier`, reported as not having one. Code Reviewer, Codebase Onboarding Engineer, Database Optimizer, Software Architect, Accessibility Auditor, Reality Checker and `loop-verifier` were listed with `Read, Grep, Glob`; Backend Architect, Frontend Developer and API Tester with no `tools` field, so all tools. The skill `implement-ticket` was reported as available. Not shown by this run: that a launched role follows its section, and behaviour in an interactive session; no role was launched.
+
+## Local change: SDLC kit (2026-11-22)
+
+Added in one pass, with no change to the role files other than one checklist line:
+
+- Review gate hook `.claude/hooks/role_gate.py` (gate roles Code Reviewer and Reality Checker) and `.claude/settings.json`.
+- `.claude/skills/next-ticket/`, `ui-ux-pro-max/` and `unslop/` (the last two with their own PROVENANCE.md); the `implement-ticket` playbook now names them.
+- One checklist line naming `docs/ui-quality.md` in Frontend Developer, Accessibility Auditor and Code Reviewer. UI Designer and UX Architect are not installed here.
+- CI, pull request template, CODEOWNERS, issue template, Dependabot, SECURITY.md, CHANGELOG.md, `docs/RELEASING.md`, `docs/ui-quality.md`, `docs/owner-decisions.md`.

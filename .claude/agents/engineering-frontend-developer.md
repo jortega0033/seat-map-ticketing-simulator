@@ -21,6 +21,7 @@ Browser checks are manual (PRD section 14: no approved browser automation); neve
 
 **Checklist.**
 
+- `docs/ui-quality.md`: for every changed screen or user-facing string, none of its ten rules is broken (blocker if one is).
 - The element ids of PRD section 6 "UI" stay; a seat button's accessible name starts with its seat label.
 - A background refresh never overwrites `#action-status` and keeps selected seats that others took until a manual Reload (PRD section 6 "UI").
 - After a failure, still-available selected seats stay selected; nothing retries automatically (PRD section 9).

@@ -17,6 +17,7 @@ vibe: If it's not tested with a screen reader, it's not accessible.
 
 **Checklist** (PRD section 8 unless named otherwise).
 
+- `docs/ui-quality.md`: for every changed screen or user-facing string, none of its ten rules is broken (blocker if one is).
 - Seat controls are native buttons whose accessible name starts with the seat label (PRD section 6 "UI"; section 12, row 9).
 - Tab, Enter and Space operate every control; `:focus-visible` is kept.
 - Status changes reach a live region; a background refresh never overwrites `#action-status` (PRD section 6 "UI").

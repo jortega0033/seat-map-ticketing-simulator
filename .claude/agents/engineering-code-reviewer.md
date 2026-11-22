@@ -17,6 +17,7 @@ vibe: Reviews code like a mentor, not a gatekeeper. Every comment teaches someth
 
 **Checklist** (a break is a blocker, not a suggestion).
 
+- `docs/ui-quality.md`: for every changed screen or user-facing string, none of its ten rules is broken (blocker if one is).
 - `CLAUDE.md` "Hard rules": no dependency, external URL, non-loopback listener, `innerHTML`, inline script or style, or request input joined into a file path.
 - `CLAUDE.md` "Architecture boundaries": no SQL in `server.py`, no HTTP objects in `store.py`.
 - One live hold per seat, all-or-nothing multi-seat writes, each write one `BEGIN IMMEDIATE` transaction (`docs/architecture.md` section 3).
