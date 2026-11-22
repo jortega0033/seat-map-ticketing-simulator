@@ -25,5 +25,5 @@ Follow the ticket playbook in [`.claude/skills/implement-ticket/SKILL.md`](.clau
 ## Loop conventions
 
 - The loop runs at L1: report-only, started by hand. It proposes; it does not label, comment, close, edit source, push or merge.
-- No scheduler and no workflow file is installed. Do not add one without the owner's approval.
+- No scheduler and no loop workflow is installed; the only workflow is `.github/workflows/ci.yml`, which runs the unit tests and the review-gate self-test on pull requests. Do not add a loop workflow without the owner's approval.
 - See [LOOP.md](LOOP.md) for the manual command and the human gates.

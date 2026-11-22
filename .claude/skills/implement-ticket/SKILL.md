@@ -19,12 +19,12 @@ The project subagents in `.claude/agents/` are part of the work. Delegate to the
 5. **Implement** inside the ticket's stated scope. Delegate the work to the implementing role that matches the files being changed (table "While coding"). Do not widen scope; note anything else you find as a follow-up.
 6. **Test.** Add or change tests for every acceptance criterion and material edge case, then run the checks listed in `CLAUDE.md`. Record each command and its result.
 7. **Specialist review.** Run every role in the table "After coding" whose trigger matches the change.
-8. **Review gate, always.** Run Code Reviewer on the full diff. Fix every material finding, re-run the checks, and have the reviewer look again until no material finding is left.
-9. **Acceptance gate, always.** Run Reality Checker with the ticket's acceptance criteria and the local evidence you produced. It checks that the documented checks ran locally and passed and that CI is configured to run them; it does not need a CI result. Do not open a pull request unless it passes.
-10. **UI check.** For a ticket that changes a screen, check every changed screen against the ten rules of `docs/ui-quality.md` and record the result as evidence.
-11. **Write the text.** Run user-facing copy, documentation and the pull request text through the `unslop` skill before the pull request is opened.
-12. **Changelog.** Add one line to `CHANGELOG.md` under Unreleased.
-13. **Hand off.** Capture the evidence `CLAUDE.md` asks for and open a draft pull request from `.github/pull_request_template.md` that names the issue, only after the local checks passed and both gates ran after the last code edit. Wait for CI on the draft. If CI fails, fix, re-run the local checks and both gates, and push. When CI is green, add the run link to the pull request description and mark it ready. Only the owner merges and releases; do not merge.
+8. **UI check.** For a ticket that changes a screen, check every changed screen against the ten rules of `docs/ui-quality.md` and record the result as evidence.
+9. **Write the text.** Run user-facing copy and documentation through the `unslop` skill before the gates, so they judge the final diff.
+10. **Changelog.** Add one line to `CHANGELOG.md` under Unreleased.
+11. **Review gate, always.** Run Code Reviewer on the full diff. Fix every material finding, re-run the checks, and have the reviewer look again until no material finding is left.
+12. **Acceptance gate, always.** Run Reality Checker with the ticket's acceptance criteria and the local evidence you produced. It checks that the documented checks ran locally and passed and that CI is configured to run them; it does not need a CI result. Do not open a pull request unless it passes.
+13. **Hand off.** Run the pull request text through `unslop`, capture the evidence `CLAUDE.md` asks for and open a draft pull request from `.github/pull_request_template.md` that names the issue, only after the local checks passed and both gates ran after the last code edit. Wait for CI on the draft. If CI fails, fix, re-run the local checks and both gates, and push. When CI is green, add the run link to the pull request description and mark it ready. Only the owner merges and releases; do not merge.
 
 ## Roles
 
@@ -55,7 +55,7 @@ The project subagents in `.claude/agents/` are part of the work. Delegate to the
 | Role | Access | Delegate to it |
 |---|---|---|
 | Code Reviewer | read-only reviewer | After implementing or changing code for a ticket, before the work is called done or a pull request is opened |
-| Reality Checker | read-only reviewer | As the last step of every ticket, to check each acceptance criterion against evidence that was actually produced before the ticket is called done |
+| Reality Checker | read-only reviewer | As the acceptance gate of every ticket, after Code Reviewer and before the draft pull request is opened, to check each acceptance criterion against evidence that was actually produced before the ticket is called done |
 
 ## Rules
 
