@@ -101,7 +101,7 @@ Put these in the pull request description. Paste real output; do not summarise a
 5. For a change under `seat_ticketing/static/`: a browser run on `http://127.0.0.1:<port>/` with the browser name and version, the viewport sizes checked (800x600 and 360 px wide), keyboard-only operation of the changed controls, and the console free of errors and of blocked or external requests. Browser checks are manual: the repository has no approved browser automation (PRD section 14).
 6. `git status` showing no stray files, and confirmation that no dependency, external URL or non-loopback listener was added.
 7. Before the draft pull request is opened: `.github/workflows/ci.yml` is configured to run the documented checks. After CI has run on the draft: green CI with the run link, added to the pull request description and as a comment on the issue. Green CI is a condition for marking the pull request ready, checked by the driver; Reality Checker does not judge it.
-8. A criterion that needs a person is done as far as an agent can and the rest is listed under "Owner checks" in the pull request.
+8. A criterion that needs a person is done as far as an agent can (a scripted run with tools already approved here, such as HTTP-level requests against 127.0.0.1; no browser driver unless the owner has approved one, PRD section 14; item 5 stays the authority for browser checks) and the rest is listed under "Owner checks" in the pull request.
 9. Anything not verified, said plainly.
 
 ## Agent roles

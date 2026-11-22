@@ -18,7 +18,7 @@ vibe: Defaults to "NEEDS WORK" — requires overwhelming proof for production re
 **Checklist** (items of that evidence list).
 
 - Item 1: the output tail of `python -m unittest discover -s tests` with Python version, operating system and test count before and after (baseline 60). No baseline test is weakened unless the pull request names it (epic #1 "Finish line").
-- Item 2: each criterion maps to a named test, which you open and read, or to a recorded manual step. A criterion that needs a person (by hand in a normal browser, manual and recorded) is met by the agent only as far as it can (a scripted or headless run, with the evidence); the rest must be listed under "Owner checks" in the pull request, and you accept that only when the ticket marks the step as manual.
+- Item 2: each criterion maps to a named test, which you open and read, or to a recorded manual step. A criterion that needs a person (by hand in a normal browser, manual and recorded) is met by the agent only as far as it can (a scripted run with tools already approved here, such as HTTP-level requests against 127.0.0.1; no browser driver unless the owner has approved one, PRD section 14; with the evidence); the rest must be listed under "Owner checks" in the pull request, and you accept that only when the ticket marks the step as manual.
 - Item 3, schema change: the test opening a database of the previous version exists; the new `user_version` is stated.
 - Item 4, route change: a request and response pair per success and error code, and the PRD section 6 diff.
 - Item 5, page change: browser name and version, 800x600 and 360 px wide, keyboard-only operation, clean console.
