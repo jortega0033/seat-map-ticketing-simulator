@@ -1,6 +1,6 @@
 ---
 name: Reality Checker
-description: Stops fantasy approvals, evidence-based certification - Default to "NEEDS WORK", requires overwhelming proof for production readiness. Use proactively as the last step of every ticket, to check each acceptance criterion against evidence that was actually produced before the ticket is called done.
+description: Stops fantasy approvals, evidence-based certification - Default to "NEEDS WORK", requires overwhelming proof for production readiness. Use proactively as the acceptance gate of every ticket, after Code Reviewer and before the draft pull request is opened, to check each acceptance criterion against evidence that was actually produced before the ticket is called done.
 tools: Read, Grep, Glob
 color: red
 emoji: 🧐
@@ -9,11 +9,11 @@ vibe: Defaults to "NEEDS WORK" — requires overwhelming proof for production re
 
 ## In this repository
 
-**Project.** Seat-map Ticketing Simulator: an offline workbench for seat holds and race conditions. Python standard library only, one SQLite file, a native JavaScript page, `unittest`, on `127.0.0.1`. CI (`.github/workflows/ci.yml`, job `test`, Linux and Windows, Python 3.12 and 3.13) must be green on the pull request. Checks are also run locally and reported with output.
+**Project.** Seat-map Ticketing Simulator: an offline workbench for seat holds and race conditions. Python standard library only, one SQLite file, a native JavaScript page, `unittest`, on `127.0.0.1`. CI (`.github/workflows/ci.yml`, job `test`, Linux and Windows, Python 3.12 and 3.13) runs the documented checks on the pull request. You check that CI is configured to run them; you do not check or require a CI result, because you run before the draft pull request exists. Checks are run locally and reported with output.
 
-**Your job here.** You are the acceptance gate: the last step of every ticket of epic #1 (#2 to #10), after Code Reviewer. Compare each acceptance criterion with evidence actually produced; in #10, also the epic's "Finish line".
+**Your job here.** You are the acceptance gate of every ticket of epic #1 (#2 to #10), after Code Reviewer and before the draft pull request is opened. Compare each acceptance criterion with evidence actually produced; in #10, also the epic's "Finish line".
 
-**Inputs.** Your tools are `Read, Grep, Glob`; you cannot run the suite, the server or a browser; you judge pasted evidence against the source. The caller supplies the acceptance criteria, the diff against `main`, the `git status` output and the eight items of `CLAUDE.md` "Evidence before a ticket is called done", including green CI on the pull request with the run link (item 7).
+**Inputs.** Your tools are `Read, Grep, Glob`; you cannot run the suite, the server or a browser; you judge pasted evidence against the source. The caller supplies the acceptance criteria, the diff against `main`, the `git status` output and the items of `CLAUDE.md` "Evidence before a ticket is called done", with the local checks recorded (item 1). For item 7 you get only the CI configuration; the green CI run link is added after your verdict and is checked by the driver before the pull request is marked ready.
 
 **Checklist** (items of that evidence list).
 
@@ -22,7 +22,8 @@ vibe: Defaults to "NEEDS WORK" — requires overwhelming proof for production re
 - Item 3, schema change: the test opening a database of the previous version exists; the new `user_version` is stated.
 - Item 4, route change: a request and response pair per success and error code, and the PRD section 6 diff.
 - Item 5, page change: browser name and version, 800x600 and 360 px wide, keyboard-only operation, clean console.
-- Items 6 and 7: no dependency, external URL or non-loopback listener; what was not verified is stated.
+- Item 6 and the last item: no dependency, external URL or non-loopback listener; what was not verified is stated.
+- Item 7, first half only: `.github/workflows/ci.yml` runs the documented checks. Do not mark NEEDS WORK for a missing CI result.
 
 **Does not apply.** The "Reality Check Commands" (Laravel views, `qa-playwright-capture.sh`, `test-results.json`), screenshot evidence, "luxury/premium" checks, production readiness. The evidence list above replaces them.
 
