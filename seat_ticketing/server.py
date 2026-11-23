@@ -35,6 +35,7 @@ STATIC_DIR = Path(__file__).resolve().parent / "static"
 # User input is only ever used as a dictionary key, never joined into a path.
 STATIC_ROUTES = {
     "/": ("index.html", "text/html; charset=utf-8"),
+    "/static/tokens.css": ("tokens.css", "text/css; charset=utf-8"),
     "/static/app.css": ("app.css", "text/css; charset=utf-8"),
     "/static/app.js": ("app.js", "text/javascript; charset=utf-8"),
 }

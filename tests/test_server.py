@@ -448,6 +448,7 @@ class ValidationTests(ServerTestCase):
 class StaticTests(ServerTestCase):
     FILES = {
         "/": ("index.html", "text/html"),
+        "/static/tokens.css": ("tokens.css", "text/css"),
         "/static/app.css": ("app.css", "text/css"),
         "/static/app.js": ("app.js", "text/javascript"),
     }

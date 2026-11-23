@@ -22,4 +22,5 @@ Binding for every screen, page and piece of user-facing copy in this repository.
 - User-facing copy, documentation and pull request text go through the `unslop` skill (`.claude/skills/unslop/`) before the pull request is opened.
 - The Frontend Developer, UI Designer (where installed), UX Architect (where installed), Accessibility Auditor and Code Reviewer roles name this file in their checklists.
 - Enforcement is by the review gate (Code Reviewer on every ticket), not by a script. Rule 1 can be linted; rule 2 cannot be detected reliably from CSS.
+- Colours come from the Pipenzo tokens in [design-tokens.md](design-tokens.md); new UI adds no colour literals.
 - The repository rules in `CLAUDE.md` still apply: no external font, image or script, no `innerHTML`, no inline style or script.
