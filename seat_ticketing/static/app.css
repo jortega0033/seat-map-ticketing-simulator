@@ -86,13 +86,14 @@ h2 { margin: 0 0 8px; font-size: 1.15rem; }
   padding: 8px 12px;
   font: inherit;
   font-weight: 600;
-  color: var(--on-primary);
-  background: var(--primary);
-  border: 2px solid var(--primary-edge);
+  color: var(--fg);
+  background: var(--bg-raised);
+  border: 2px solid var(--control-border);
   border-radius: 6px;
   cursor: pointer;
 }
-.actions button:disabled { color: var(--faint); background: var(--bg-sunken); border-color: var(--control-border); cursor: not-allowed; }
+#hold-button { color: var(--on-primary); background: var(--primary); border-color: var(--primary-edge); }
+.actions button:disabled, #hold-button:disabled { color: var(--faint); background: var(--bg-sunken); border-color: var(--control-border); cursor: not-allowed; }
 #action-status {
   min-height: 2.8em;
   margin: 8px 0;
