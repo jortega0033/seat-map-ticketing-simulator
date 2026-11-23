@@ -16,7 +16,7 @@ Dated record of the owner's decisions for this repository. Changing any entry ne
 | 10 | Open decisions on tickets are settled with the ticket's stated default (list below). | 2026-11-22 | Epic #1, "Decisions fixed for this batch"; `.claude/skills/implement-ticket/SKILL.md` step 1 (open owner decisions) |
 | 12 | The ten UI rules are binding; the `ui-ux-pro-max` and `unslop` skills are installed and used for UI work and for copy. | 2026-11-22 | `docs/ui-quality.md`, `.claude/skills/ui-ux-pro-max/`, `.claude/skills/unslop/` |
 | 13 | Visual system: Pipenzo Flow look tokens (docs/design-tokens.md). SDLC kit version: jortega0033/sdlc-kit v1.0.0. | 2026-11-23 | `seat_ticketing/static/tokens.css`, `docs/design-tokens.md` |
-| 14 | Yellow accent, focus ring, themes, token linking and one plan button: D1 to D5 in the entry below. | 2026-11-23 | `docs/design-tokens.md` |
+| 14 | Yellow accent, focus ring, themes and token linking: D1 to D4 in the entry below. | 2026-11-23 | `docs/design-tokens.md`, `docs/ui-quality.md` (rules recorded; the page follows in ticket work for D1, ticket #43) |
 
 ## Entry 14: yellow accent and token rules (2026-11-23)
 
@@ -24,7 +24,7 @@ Dated record of the owner's decisions for this repository. Changing any entry ne
   - D2 Focus ring: --focus is a focus indicator, exempt from the accent limit, including where it is yellow in dark. A ticket that says the focus style stays unchanged means the rule on main after the token pull request. Recommended by the orchestrator, adopted under the owner's delegation of 2026-11-23.
   - D3 Themes: contrast and no-colour-alone checks cover both the light and the dark block of tokens.css. Recommended by the orchestrator, adopted under the owner's delegation of 2026-11-23.
   - D4 Linking: a ticket that creates a page or its static allowlist links tokens.css before any other stylesheet and serves it (allowlist and its test). Recommended by the orchestrator, adopted under the owner's delegation of 2026-11-23.
-  - D5 release-dependency-planner: while a plan is open only one yellow primary button shows; "New plan" (#new-plan) becomes neutral, in ticket #11. Recommended by the orchestrator, adopted under the owner's delegation of 2026-11-23.
+  - D5 Does not apply to this repository (jortega0033/release-dependency-planner#11).
 
 ## Entry 10: decisions settled by the ticket's stated default
 

@@ -24,11 +24,13 @@ New UI uses these tokens. No new colour literals (hex, `rgb()`, `hsl()`, named c
 
 ## Where yellow is used
 
-- The yellow accent (`--primary`) is used for the primary action, the current-step marker and the current selection (UI rule 8 in [ui-quality.md](ui-quality.md)). Decided by the owner on 2026-11-23.
-- A selection is marked with a solid `--primary` fill and `--on-primary` text. A yellow border alone is not enough: it has about 1.5:1 contrast against white in the light theme. A selection also carries a second sign that is not colour (weight, an icon or text) and the matching aria attribute (for example `aria-pressed` or `aria-selected`). Never a tint with a border of the same hue, and never a thick border on one side.
+- The yellow accent (`--primary`) is used only for the primary action, the current-step marker and the current selection (UI rule 8 in [ui-quality.md](ui-quality.md)). Decided by the owner on 2026-11-23.
+- A selection is marked with a solid `--primary` fill and `--on-primary` text. A yellow border alone is not enough: it has about 1.5:1 contrast against white in the light theme. A selection also carries a second sign that is not colour (weight, an icon or text) and the existing aria attribute (today `aria-pressed` on the seat buttons). Never a tint with a border of the same hue, and never a thick border on one side.
 - `--focus` is a focus indicator and is exempt from the accent limit, including where it is yellow in the dark theme. A ticket that says the focus style stays unchanged means the rule on `main` after the token pull request.
 - Contrast and no-colour-alone checks cover both themes: the light block (`:root`) and the dark block of `tokens.css`.
-- This document takes precedence over the header comment of `tokens.css`. That comment is narrower: it lists yellow only on the primary button, the current-step node and a few small marks, and does not mention selection. It is left as it is, because the copy must stay identical to the source.
+- `--state-selected` does not mark the current selection; a solid `--primary` fill does.
+- This document takes precedence over any comment in `tokens.css`: the header and the inline comments on `--primary` and `--state-selected`. The header comment is narrower: it lists yellow only on the primary button, the current-step node and a few small marks, and does not mention selection. It is left as it is, because the copy must stay identical to the source.
+- Source: how a selection looks, and the focus, theme and linking rules, were recommended by the orchestrator and adopted under the owner's delegation of 2026-11-23; see entry 14 in [owner-decisions.md](owner-decisions.md).
 - Status: the page does not follow this yet. It still marks a selected seat in a neutral colour (a double border in `app.css`). The page follows in ticket work.
 
 ## Light and dark
