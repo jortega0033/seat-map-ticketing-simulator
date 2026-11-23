@@ -14,6 +14,7 @@ Dated record of the owner's decisions for this repository. Changing any entry ne
 | 8 | Continuous integration runs on Linux and Windows; the default branch requires a pull request and green checks. | 2026-11-22 | `.github/workflows/ci.yml`; branch protection is set on GitHub by the owner's orchestrator |
 | 9 | Permission rules: documented commands are allowed; force pushes, pushes to the default branch, merges, releases and reads of secrets are denied; edits to CI, agent configuration and Loop files ask first. | 2026-11-22 | `.claude/settings.json` |
 | 10 | Open decisions on tickets are settled with the ticket's stated default (list below). | 2026-11-22 | Epic #1, "Decisions fixed for this batch"; `.claude/skills/implement-ticket/SKILL.md` step 1 (open owner decisions) |
+| 11 | Visual system: Pipenzo Flow look tokens (docs/design-tokens.md). SDLC kit version: jortega0033/sdlc-kit v1.0.0. | 2026-11-23 | `seat_ticketing/static/tokens.css`, `docs/design-tokens.md` |
 | 12 | The ten UI rules are binding; the `ui-ux-pro-max` and `unslop` skills are installed and used for UI work and for copy. | 2026-11-22 | `docs/ui-quality.md`, `.claude/skills/ui-ux-pro-max/`, `.claude/skills/unslop/` |
 
 ## Entry 10: decisions settled by the ticket's stated default

@@ -137,7 +137,7 @@ How a ticket gets from the backlog to a ready pull request. Each piece has one h
 - **Pull request.** [`.github/pull_request_template.md`](.github/pull_request_template.md). Code owner: [`.github/CODEOWNERS`](.github/CODEOWNERS).
 - **Labels.** `status:ready`, `status:blocked`, `status:in-progress`, `needs-decision`, `tracking` (container ticket, never picked). A `needs-decision` ticket is not started.
 - **Changelog.** Every ticket pull request adds one line to [`CHANGELOG.md`](CHANGELOG.md) under Unreleased.
-- **UI and writing.** [docs/ui-quality.md](docs/ui-quality.md) (ten binding rules; skills `ui-ux-pro-max` and `unslop` in `.claude/skills/`).
+- **UI and writing.** [docs/ui-quality.md](docs/ui-quality.md) (ten binding rules; skills `ui-ux-pro-max` and `unslop` in `.claude/skills/`). Colours come from the Pipenzo tokens in [docs/design-tokens.md](docs/design-tokens.md).
 - **Decisions.** [docs/owner-decisions.md](docs/owner-decisions.md) records the owner's decisions. Changing one needs the owner; stop and say so if one blocks a ticket.
 - **Merge and release.** Only the owner merges and releases ([docs/RELEASING.md](docs/RELEASING.md), [SECURITY.md](SECURITY.md)).
 
